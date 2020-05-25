@@ -1,2 +1,2 @@
-# VLSI_wangmingyu
+# Simon_code
 Simon Cipher verilog/system verilog code.
