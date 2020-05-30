@@ -2,26 +2,26 @@ module simon_pad(
     input[31:0] pad_plaintext,
     input[63:0] pad_keytext,
     input pad_clk,
-    //input pad_rst,
+    input pad_rst,
     output[31:0] pad_ciphertext
 );
 
     wire [31:0] plaintext;
     wire [63:0] keytext;
     wire clk;
-    //wire rst;
+    wire rst;
     wire [31:0] ciphertext;
 
-    simon_for s1(
+    simon_pipeline s1(
         .plaintext(plaintext),
         .keytext(keytext),
         .clk(clk),
-        //.rst(rst),
+        .rst(rst),
         .ciphertext(ciphertext)
     );
 
     PI PAD_CLK(.PAD(pad_clk),.IE(1'b1),.C(clk));
-    //PI PAD_RST(.PAD(pad_rst),.IE(1'b1),.C(rst));
+    PI PAD_RST(.PAD(pad_rst),.IE(1'b1),.C(rst));
 
     PI PAD_PLAINTEXT_0(.PAD(pad_plaintext[0]),.IE(1'b1),.C(plaintext[0]));
     PI PAD_PLAINTEXT_1(.PAD(pad_plaintext[1]),.IE(1'b1),.C(plaintext[1]));

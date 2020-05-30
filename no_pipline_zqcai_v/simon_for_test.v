@@ -1,13 +1,15 @@
-module simon_pipeline_test_for;
+module simon_for_test;
     reg[31:0] plaintext;
+    reg[63:0] keytext;
     reg clk;
-	reg [31:0] ciphertext;
+	wire[31:0] ciphertext;
 
     initial
     begin
+        keytext = 64'h1918111009080100;
         #125 plaintext = 32'h41424344;
-        #100 plaintext = 32'h77686565;
-        #100 plaintext = 32'h65656877;
+        #100 plaintext = 32'h345a6b7c;
+        #100 plaintext = 32'h78569043;
         #500;
         $finish;
     end
@@ -21,6 +23,7 @@ module simon_pipeline_test_for;
 
     simon_for uut(
         .plaintext(plaintext),
+        .keytext(keytext),
         .clk(clk),
         .ciphertext(ciphertext)
         );
