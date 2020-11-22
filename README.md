@@ -1,2 +1,3 @@
 # Simon_code
-Simon Cipher verilog/system verilog code.
+
+Simon编码器的system verilog代码。
